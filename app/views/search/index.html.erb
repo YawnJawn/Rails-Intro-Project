@@ -1,0 +1,23 @@
+<h1>
+    <% if @pokes.count == 0 %>
+    No Results
+  <% else %>
+    <%= pluralize(@pokes.count, "Result") %>
+  <% end %>
+</h1>
+<%= render 'search/form'%>
+
+<table>
+    <thead>
+        <tr>
+            <th><%= sort_link(@query, :name, "Name", default_order: :asc) %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @pokes.each do |poke|%>
+            <tr>
+                <td><%= poke.name %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

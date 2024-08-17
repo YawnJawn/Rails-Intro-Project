@@ -1,0 +1,24 @@
+<%= render 'search/form'%>
+<h1>Hello, this is the Pokemon index page</h1>
+
+<h1>Pokemon Names</h1>
+<div>
+  <% @pokemons.each do |pokemon|%>
+  <div>
+    <h2>Name: <%= pokemon.name %></h2>
+    <span>First Type: <%= pokemon.first_type %></span>
+    <br>
+    <span>Second Type: <%= pokemon.second_type %></span>
+    </div>
+      <% if pokemon.image&.image&.attached? %>
+        <%= image_tag pokemon.image.resize_image %>
+          <%#= Must call the associated image with the pokemon as image.image because the first one retrieves the associated 'image record' while the second one retrieves that actual image file attached to 'image' record. %>
+        <% else %>
+        <span>No image available</span>
+        <% end %>
+    </div>
+    <% end %>
+  </div>
+
+  <%= paginate @pokemons%>
+  
