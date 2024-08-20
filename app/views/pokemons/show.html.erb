@@ -1,0 +1,15 @@
+<%= render 'navbar' %>
+<div>
+    <h1>Name: <%= @pokemon.name %></h1>
+    <h2>Primary Type: <%= @pokemon.first_type %></h4>
+    <% if @pokemon.second_type.present? %>
+    <h2>Secondary Type: <%= @pokemon.second_type %></h2>
+    <% end %>
+    <% if @pokemon.image&.image&.attached? %>
+        <%= image_tag @pokemon.image.resize_image %>
+          <%#= Must call the associated image with the pokemon as image.image because the first one retrieves the associated 'image record' while the second one retrieves that actual image file attached to 'image' record. %>
+        <% else %>
+        <span>No image available</span>
+        <% end %>
+</div>
+

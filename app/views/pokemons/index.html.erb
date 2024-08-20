@@ -1,24 +1,34 @@
-<%= render 'search/form'%>
-<h1>Hello, this is the Pokemon index page</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
-<h1>Pokemon Names</h1>
-<div>
-  <% @pokemons.each do |pokemon|%>
-  <div>
-    <h2>Name: <%= pokemon.name %></h2>
-    <span>First Type: <%= pokemon.first_type %></span>
-    <br>
-    <span>Second Type: <%= pokemon.second_type %></span>
-    </div>
-      <% if pokemon.image&.image&.attached? %>
-        <%= image_tag pokemon.image.resize_image %>
-          <%#= Must call the associated image with the pokemon as image.image because the first one retrieves the associated 'image record' while the second one retrieves that actual image file attached to 'image' record. %>
-        <% else %>
-        <span>No image available</span>
-        <% end %>
-    </div>
-    <% end %>
-  </div>
+<body>
+  <%= render 'navbar' %>
+  <%= render 'search/form' %>
+  <h1>Hello, this is the Pokemon index page</h1>
 
-  <%= paginate @pokemons%>
+  <div class="pokemons">
+    <% @pokemons.each do |pokemon|%>
+    <div>
+      <h2>Name: <%= link_to pokemon.name, pokemon_path(pokemon) %></h2>
+      <span>Primary Type: <%= pokemon.first_type %></span>
+      <br>
+      <% if pokemon.second_type.present? %>
+      <span>Secondary Type: <%= pokemon.second_type %></span>
+      <% end %>
+      </div>
+        <% if pokemon.image&.image&.attached? %>
+          <%= image_tag pokemon.image.resize_image %>
+            <%#= Must call the associated image with the pokemon as image.image because the first one retrieves the associated 'image record' while the second one retrieves that actual image file attached to 'image' record. %>
+          <% else %>
+          <span>No image available</span>
+          <% end %>
+      <% end %>
+    </div>
+
+    <%= paginate @pokemons%>
+  </body>
+  </html>
   
