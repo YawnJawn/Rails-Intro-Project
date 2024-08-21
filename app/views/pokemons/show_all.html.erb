@@ -1,0 +1,25 @@
+<%= render 'navbar' %>
+<h1>Displaying all pokemons in the database</h1>
+
+<table>
+    <thead>
+        <tr>
+        <th><%= link_to 'Name', show_all_pokemons_path(sort: 'name', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %></th>
+        <th><%= link_to 'Primary Type', show_all_pokemons_path(sort: 'first_type', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %></th>
+        <th><%= link_to 'Secondary Type', show_all_pokemons_path(sort: 'second_type', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @pokemons.each do |poke| %>
+        <tr> 
+            <td><%= poke.name %></td>
+            <td><%= poke.first_type %></td>
+            <% if poke.second_type.present? %>
+            <td><%= poke.second_type %></td>
+            <% else %>
+            <td><td>
+            <% end %>
+            <% end %>
+        </tr>
+    </tbody>
+</table>

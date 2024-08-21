@@ -4,6 +4,6 @@ class Image < ApplicationRecord
 
   def resize_image
     return unless image.attached?
-    image.variant(resize_to_fill: [50, 50]).processed
+    image.variant(resize_to_fill: [100, 100]).processed
   end
 end

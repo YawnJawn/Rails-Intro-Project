@@ -14,6 +14,23 @@
  *= require_self
  */
 
+ body{
+    width: 80%;
+    margin: 0 auto;
+ }
+
  .pokemons{
     display: flex;
+    flex-wrap: wrap;
+ }
+
+ .pokemon{
+    width: 250px;
+    margin: 0 auto;
+    padding: 10px 10px;
+
+ }
+
+ .image{
+    padding: 20px 20px;
  }
