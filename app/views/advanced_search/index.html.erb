@@ -1,0 +1,48 @@
+<%= render 'pokemons/navbar' %>
+
+<h1>Advanced Search for Pokemon</h1>
+
+<%= form_with url: advanced_search_path, method: :get, local: true do |form| %>
+    <div>
+        <%= form.label :first_type, 'First_type:'%>
+        <%= form.select :first_type, options_for_select(
+        ['Bug', 'Dark', 'Dragon', 'Electric', 'Fairy', 'Fighting', 'Fire', 'Flying', 'Ghost', 'Grass', 'Ground', 'Ice', 'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water'],
+        @selected_first_type), {include_blank: 'All'} %>
+    </div>
+
+    <div>
+    <%= form.label :second_type, 'Second Type:' %>
+    <%= form.select :second_type, options_for_select(
+      ['Bug', 'Dark', 'Dragon', 'Electric', 'Fairy', 'Fighting', 'Fire', 'Flying', 'Ghost', 'Grass', 'Ground', 'Ice', 'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water', 'None'], 
+      @selected_second_type), { include_blank: 'All' } %>
+  </div>
+
+  <div>
+    <%= form.submit 'Advanced Search' %>
+  </div>
+<% end %>
+
+
+<!-- Display Results -->
+<% if @pokemons.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Primary Type</th>
+        <th>Secondary Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pokemons.each do |pokemon| %>
+        <tr>
+          <td><%= pokemon.name %></td>
+          <td><%= pokemon.first_type %></td>
+          <td><%= pokemon.second_type %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No Pokémon found.</p>
+<% end %>
