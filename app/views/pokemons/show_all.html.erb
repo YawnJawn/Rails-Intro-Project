@@ -1,7 +1,7 @@
 <%= render 'navbar' %>
-<h1>Displaying all pokemons in the database</h1>
+<h1 class="heading">All Pokemons</h1>
 
-<table>
+<table class="table">
     <thead>
         <tr>
         <th><%= link_to 'Name', show_all_pokemons_path(sort: 'name', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %></th>
@@ -16,8 +16,6 @@
             <td><%= poke.first_type %></td>
             <% if poke.second_type.present? %>
             <td><%= poke.second_type %></td>
-            <% else %>
-            <td><td>
             <% end %>
             <% end %>
         </tr>

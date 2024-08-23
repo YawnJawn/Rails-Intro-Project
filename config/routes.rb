@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'about', to:"about#index"
   get 'search', to:"search#index"
-   get 'advanced_search', to:"advanced_search#index"
+  get 'advanced_search', to:"advanced_search#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

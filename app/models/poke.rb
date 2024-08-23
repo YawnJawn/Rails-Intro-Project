@@ -1,6 +1,9 @@
 class Poke < ApplicationRecord
     has_one :image, dependent: :destroy #this means when the parent is destroyed the children will also be erased
     accepts_nested_attributes_for :image
+    validates :name, presence: true
+    validates :first_type, presence: true
+
 
     def self.ransackable_attributes(auth_object = nil)
         ["created_at", "first_type", "id", "id_value", "name", "second_type", "updated_at"]
