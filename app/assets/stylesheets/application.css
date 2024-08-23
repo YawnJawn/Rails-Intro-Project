@@ -83,3 +83,7 @@ a{
 .info{
     width: 400px;
 }
+
+audio::-webkit-media-controls-enclosure {
+    background-color: #c6c6ec;
+}
